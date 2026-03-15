@@ -6,7 +6,7 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteModal, setDeleteModal] = useState({ show: false, id: null });
-  const [error] = useState('');
+  const [error, setError] = useState('');
   const fetchProducts = async () => {
     try {
       setLoading(true);
