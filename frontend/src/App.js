@@ -4,7 +4,7 @@ import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
 
 function App() {
-  const [error, setError] = useState('');
+  const [error] = useState('');
 
   return (
     <Container fluid className="py-5 bg-light min-vh-100">
