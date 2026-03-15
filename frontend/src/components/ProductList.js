@@ -8,18 +8,21 @@ const ProductList = () => {
   const [deleteModal, setDeleteModal] = useState({ show: false, id: null });
   const [error, setError] = useState('');
   const fetchProducts = async () => {
-    try {
-      setLoading(true);
-      const response = await productAPI.getAll();
-      setProducts(response.data || []);
-      setError('');
-    } catch (err) {
-      setError('Failed to load products. Is backend running on port 5000?');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    setLoading(true);
+    const response = await productAPI.getAll();
+
+    const productData = response.data?.data || response.data || [];
+    setProducts(Array.isArray(productData) ? productData : []);
+
+    setError('');
+  } catch (err) {
+    setError('Failed to load products. Is backend running on port 5000?');
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     fetchProducts();
